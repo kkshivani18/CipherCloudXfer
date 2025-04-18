@@ -1,5 +1,5 @@
 # CipherCloudXfer 🌩️
-This project provides a secure, automated system for encrypting, transferring, and decrypting files between two systems using containerized services and cloud storage.
+This project provides a secure, automated system for encrypting, transferring, and decrypting files between two systems using containerized services and cloud storage. It's a small demo or project for implementing docker. 
 
 🛠️ Tech Stack
 - Docker – Containerized sender & receiver services
