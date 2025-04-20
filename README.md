@@ -6,14 +6,14 @@ This project provides a secure, automated system for encrypting, transferring, a
 🛠️ Tech Stack
 - Docker – Containerized sender & receiver services
 - Python – Implements encryption & decryption service 
-- GitHub Actions – Automates encryption, transfer, and decryption 
+- GitHub Actions – Automates encryption, transfer and decryption 
 
 🚀 Features
- - End-to-End Encryption – Uses AES/GPG encryption before transfer  
+ - End-to-End Encryption – Uses AES encryption done via Fernet before transfer  
  - Containerized Architecture – Sender & receiver services run in isolated environments    
  - Automated Workflow – GitHub Actions handles file encryption, transfer, and   decryption  
  
 🔧 How It Works
  - User uploads a file to the containerized sender service
- - The file is encrypted before being sent using AES/GPG
+ - The file is encrypted before being sent using AES via Fernet
  - Receiver service automatically decrypts the file after transfer
