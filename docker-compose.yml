@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  sender:
+    build: ./sender
+    container_name: sender-app
+    volumes:
+      - ./sender:/app
+    working_dir: /app
+    command: ["python", "sender.py", "file.txt"]
+
+  receiver:
+    build: ./receiver
+    container_name: receiver-app
+    volumes:
+      - ./receiver:/app
+    working_dir: /app
+    command: ["python", "receiver.py", "file.txt.enc"]
