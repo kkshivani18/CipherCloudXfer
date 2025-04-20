@@ -1,2 +1,9 @@
 
 test_files
+
+# sensitive files
+/sender/encryption_key.key
+/sender/file.txt.enc
+/receiver/encryption_key.key
+/receiver/file.txt.enc
+
