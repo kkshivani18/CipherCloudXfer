@@ -1,0 +1,66 @@
+name: Build and Test Docker Images
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Build Sender Image
+      run: docker build -t ciphercloudxfer-sender ./sender
+
+    - name: Build Receiver Image
+      run: docker build -t ciphercloudxfer-receiver ./receiver
+
+    - name: Run Sender Container (Test)
+      run: |
+        docker run --rm -v ${{ github.workspace }}/sender:/app ciphercloudxfer-sender file.txt
+
+    - name: Run Receiver Container (Test)
+      run: |
+        docker run --rm -v ${{ github.workspace }}/receiver:/app ciphercloudxfer-receiver file.txt.enc
+
+
+file 2 docker.yml
+
+name: Docker Build and Run Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Build sender image
+      run: docker build -t ciphercloudxfer-sender ./sender
+
+    - name: Run sender container
+      run: docker run --rm ciphercloudxfer-sender file.txt
+
+    - name: Build receiver image
+      run: docker build -t ciphercloudxfer-receiver ./receiver
+
+    - name: Run receiver container
+      run: docker run --rm ciphercloudxfer-receiver file.txt.enc
+
